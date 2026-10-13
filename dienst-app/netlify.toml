@@ -1,5 +1,6 @@
 [build]
   publish   = "public"
+  command   = "node scripts/stamp-version.js || echo Versionsstempel uebersprungen"   # schreibt bei jedem Deploy eine neue Versionsnummer
   functions = "netlify/functions"
 
 [functions]
@@ -21,3 +22,8 @@
   [headers.values]
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "same-origin"
+
+[[headers]]
+  for = "/version.json"
+  [headers.values]
+    Cache-Control = "no-store"
